@@ -16,10 +16,22 @@ module FA_Gate(
 );
   wire ps, pc1, pc2;
 
-  xor (ps,  a,   b);
+// We moved the final OR gate to the very top, and mixed the rest.
+  or  (cout, pc1, pc2);
   and (pc1, a,   b);
   xor (sum, cin, ps);
   and (pc2, cin, ps);
-  or  (cout, pc1, pc2);
+  xor (ps,  a,   b);
 
 endmodule
+
+/*
+TASK 1 QUESTION ANSWER:
+1(b) vs 1(a): The waveform does not change. 
+              Verilog gate-level modeling describes physical circuit structure, meaning all statements are executed in parallel. 
+              Reordering the text does not change how the hardware is physically wired.
+
+1(c) vs 1(a): The waveform does change
+              Adding the delay value using # models the physical time it takes for a signal to transition through a logic gate. 
+              Because the final outputs depend on intermediate internal wires, these gate delays stack, causing the outputs to update later in time.
+*/
