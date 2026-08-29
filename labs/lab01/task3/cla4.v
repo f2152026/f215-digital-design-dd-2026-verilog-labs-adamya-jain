@@ -47,7 +47,7 @@ module cla4(
 
   and #(2) (t_c2_1, p1, g0);
   and #(2) (t_c2_2, p1, p0, cin);
-  or  #(2) (c2, g1, t_c2_1, t_c2_3);
+  or  #(2) (c2, g1, t_c2_1, t_c2_2);
 
   and #(2) (t_c3_1, p2, g1);
   and #(2) (t_c3_2, p2, p1, g0);
